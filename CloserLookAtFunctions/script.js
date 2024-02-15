@@ -85,3 +85,69 @@ console.log(dutch)
 const flightData = [909, 'George Cooper']
 book.apply(dutch, flightData)
 console.log(dutch)
+
+const bookKLM = book.bind(dutch)
+bookKLM(23, "TwennyOne")
+
+lufthansa.planes = 300;
+lufthansa.buyPlane = function(){
+    console.log(this)
+    this.planes++
+    console.log(this.planes)
+}
+
+document.querySelector('.buy')
+.addEventListener('click', lufthansa.buyPlane
+.bind(lufthansa))
+
+
+const addTax = function(rate, value){
+    return value + value * rate
+}
+console.log(addTax(0.1, 300))
+
+
+const addTax2 = (rate2, value2) =>  value2 + value2 * rate2;
+console.log(addTax2(0.2, 100))
+
+const addVat = addTax.bind(null, 0.23)
+
+console.log(addVat(100))
+
+
+const addTaxRate = function(rate){
+return function(value){
+    return value + value * rate 
+}
+}
+
+// Create a prompt
+
+const poll = {
+    question: 'What is your favourite programming language?',
+    options: ['0: Javascript', '1: Python', '2: Rust', '3: C'],
+    answers: new Array(4).fill(0),
+    registerNewAnswer (){
+        const answer = Number(prompt(`${this.question}\n${this.options.join('\n')} \n(Write option Number)`))
+        console.log(answer)
+// Register the value
+        typeof answer === 'number' && answer < this.answers.length && this.answers[answer]++
+        // console.log(this.answers)
+        this.displayResults()
+        this.displayResults('string')
+     },
+
+     displayResults(type = 'array'){
+         if (type === 'array'){
+             console.log(this.answers) 
+         } else if (type === 'string') {
+            console.log(`Poll results are ${this.answers.join(', ')}`)
+     }
+     }
+    }
+
+
+
+// poll.registerNewAnswer()
+
+document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll))
