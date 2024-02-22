@@ -150,4 +150,44 @@ const poll = {
 
 // poll.registerNewAnswer()
 
-document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll))
+// document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll))
+
+
+// Immediately invoked Function expressions
+
+// const runOnce = function(){
+//     console.log('This will never run again')
+// }
+// runOnce()
+
+
+// (function () {
+//     console.log('Oops it ran again')
+// }) ()
+
+// (() => console.log('Oops it ran again'))()
+    
+
+
+const secureBooking = function(){
+    let passengerCount = 0
+
+    return function(){
+        passengerCount++
+        console.log(`${passengerCount} passengers`)
+    }
+}
+
+const booker = secureBooking()
+booker(0)
+
+
+
+// Example number2
+const boardPassengers = function(n, wait){
+    const perGroup = n / 3
+}
+
+setTimeout(function(){
+    console.log('Timer')
+}, 2000)
